@@ -1,5 +1,6 @@
 package courier;
 
+import com.github.javafaker.Faker;
 import io.qameta.allure.Description;
 import io.qameta.allure.junit4.DisplayName;
 import org.junit.Test;
@@ -12,7 +13,8 @@ public class CourierTest {
     @DisplayName("Creating a courier is a positive test")
     @Description("Checking the status code and response of the POST request when creating a courier and check duplicate")
     public void createCourierPositiveAndNegativeTest() {
-        Courier exCourier = new Courier("Misha105", "qwe1234", "Misha");
+        Faker faker = new Faker();
+        Courier exCourier = new Courier(faker.name().firstName(), "qwe1234", "Misha");
         steps.postCreatePositiveCourier(exCourier);
         steps.postCreateNegativeCourier(exCourier);
     }
@@ -70,7 +72,7 @@ public class CourierTest {
     @DisplayName("Courier removal is a positive test")
     @Description("Checking the status code and the response to the DELETE request")
     public void courierPositiveDeleteTest() {
-        steps.deleteCourierPositive(354622);
+        steps.deleteCourierPositive(354626);
     }
 
     ///my test/the request is not working
